@@ -24,10 +24,15 @@ function App() {
   const [usersList, setUsersList] = useState([]);
 
   const getNewUser = async () => {
-    const { data } = await axios.get(url);
-    console.log(data.results);
-    setData(data.results);
-    setLoading(false);
+    try {
+      const { data } = await axios.get(url);
+      setData(data.results);
+      setLoading(false);
+      setValue(Object.values(data.results[0].name).splice(1).join(" "));
+    } catch (error) {
+      console.log(error);
+    }
+
   }
   const addUser = () => {
     if (usersList.filter((e) => e.id.value === data[0].id.value).length === 0) {
@@ -36,22 +41,17 @@ function App() {
       alert("This user is already added.");
     }
   }
-  // console.log(usersList);
   useEffect(() => {
     getNewUser();
   }, [])
 
   useEffect(() => {
     setTitle("name");
-    // console.log(Object.values(data[0].name).splice(1).join(" "));
-    // setValue(Object.values(data[0].name).splice(1).join(" "));
   }, [data])
 
-if (loading) {
+  if (loading) {
     return <h1 className="load">Loading.....</h1>
   }
-
-  console.log(data[0]);
   return (
     <main>
       <div className="block bcg-orange">
