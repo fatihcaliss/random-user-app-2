@@ -6,19 +6,19 @@ const Footer = () => {
   return (
     <div className="footer-div">
       <a
-        href="https://www.clarusway.com"
+        href="https://github.com/fatihcaliss"
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: "none" }}
       >
-        <code className="brand">{"<Clarusway/> "}</code>
+        <h2 className="brand">{"Fatih ÇALIŞ "}</h2>
       </a>
       <img
         src={designSvg}
         alt="design"
         style={{ width: "40px", margin: "0  25px 0 10px" }}
       />
-      <span>design</span>
+      <span>Copyright FC</span>
     </div>
   );
 };
